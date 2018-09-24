@@ -13,7 +13,7 @@
         </div>
       </li>
       <div class="cart-details">
-        <p>Total Quantity: <span class="has-text-weight-bold">2</span></p>
+        <p>Total Quantity: <span class="has-text-weight-bold">{{ cartQuantity }}</span></p>
         <p class="cart-remove-all--text">
           <i class="fa fa-trash"></i>Remove all
         </p>
@@ -34,6 +34,7 @@ export default {
   computed: mapGetters({
     cartItems: 'cartItems',
     totalCartAmount: 'getTotalCartAmount',
+    cartQuantity: 'getCartQuantity',
   }),
   components: {
     CartListItem,
