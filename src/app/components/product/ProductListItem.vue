@@ -4,7 +4,8 @@
       <span class="tag
         is-primary
         is-pulled-right
-        has-text-white">
+        has-text-white"
+        @click="addCartItem(productItem)">
         Add to Cart
       </span>
     </h2>
@@ -16,12 +17,19 @@
 </template>
 
 <script>
-// import ProductList from 'ProductList.vue';
+
+import { mapActions } from 'vuex';
 
 export default {
   name: 'ProductListItem',
-  props: ['productItem']
+  props: ['productItem'],
+  methods: {
+    ...mapActions([
+      'addCartItem',
+    ]),
+  }
 };
+
 </script>
 
 <style scoped>
