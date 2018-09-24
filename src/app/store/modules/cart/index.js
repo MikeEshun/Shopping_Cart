@@ -44,7 +44,7 @@ const actions = {
 
 
 const getters = {
-  getCartItems: state => state.cartItems,
+  cartItems: state => state.cartItems,
 
   getTotalCartAmount: state => {
     return state.cartItems.reduce( (total, cartItem) => {
@@ -53,7 +53,7 @@ const getters = {
   },
 
   getCartQuantity: state => {
-    return state.cartItem.reduce( (total, cartItem) {
+    return state.cartItems.reduce( (total, cartItem) => {
       return total + cartItem.quantity;
     }, 0);
   }
