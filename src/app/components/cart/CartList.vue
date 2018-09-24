@@ -5,24 +5,11 @@
     </div>
     <ul>
       <li class="cart-item">
-        <div>
-          <p class="cart-item--title is-inline">The Fullstack Hoodie</p>
-          <div class="is-pulled-right">
-            <i class="fa fa-arrow-circle-up cart-item--modify"></i>
-            <i class="fa fa-arrow-circle-down cart-item--modify"></i>
-          </div>
-          <div class="cart-item--content">
-            <span class="cart-item--price
-                has-text-primary
-                has-text-weight-bold">
-              19.99$ each
-            </span>
-            <span class="cart-item--quantity
-                has-text-grey
-                is-pulled-right">
-              Quantity: 2
-            </span>
-          </div>
+        <div 
+          v-for="cartItem in cartItems" 
+          :key="cartItem.id"
+          :cartItem="cartItem">
+          <CartListItem :cartItem="cartItem"></CartListItem>
         </div>
       </li>
       <div class="cart-details">
@@ -33,14 +20,27 @@
       </div>
     </ul>
     <button class="button is-primary">
-      Checkout (<span class="has-text-weight-bold">$</span>)
+      Checkout (<span class="has-text-weight-bold">${{ totalCartAmount }}</span>)
     </button>
   </div>
 </template>
 
 <script>
+import { mapGetters } from "vuex";
+import CartListItem from './CartListItem';
+
 export default {
   name: 'CartList',
+  computed: mapGetters({
+    cartItems: 'cartItems',
+    totalCartAmount: 'getTotalCartAmount',
+  }),
+  components: {
+    CartListItem,
+  },
+  created() {
+    return this.$store.dispatch('getCartItems');
+  }
 }
 </script>
 
