@@ -7,8 +7,7 @@
       <li class="cart-item">
         <div 
           v-for="cartItem in cartItems" 
-          :key="cartItem.id"
-          :cartItem="cartItem">
+          :key="cartItem.id">
           <CartListItem :cartItem="cartItem"></CartListItem>
         </div>
       </li>
